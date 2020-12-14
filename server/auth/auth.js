@@ -16,9 +16,10 @@ function verifyToken(token) {
 }
 
 function isAuthenticated({ email, password }) {
+  console.log({ email, password })
   return (
     userdb.users.findIndex(
-      user => user.email === email && user.password === password,
+      (user) => user.email === email && user.password === password,
     ) !== -1
   )
 }
