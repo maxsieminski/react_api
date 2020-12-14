@@ -1,0 +1,14 @@
+{
+  "posts": {
+    "id": 1,
+    "title": "json-server"
+  },
+  "comments": {
+    "id": 1,
+    "title": "some comment"
+  },
+  "profile": {
+    "id": "typicode",
+    "title": "test123"
+  }
+}
