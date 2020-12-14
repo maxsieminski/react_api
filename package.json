@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "body-parser": "^1.19.0",
     "json-server": "^0.16.3",
+    "jsonwebtoken": "^8.5.1",
+    "npm-run-all": "^4.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -14,10 +17,14 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "npm-run-all --parallel start-backend start-client",
+    "start-client": "react-scripts start",
+    "start-backend": "json-server --watch --port=8000 ./server/database.json",
+    "server": "json-server --watch --port=8000 ./server/database.json",
+    "server-auth": "node server/server.js"
   },
   "eslintConfig": {
     "extends": [
