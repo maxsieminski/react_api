@@ -1,34 +1,23 @@
-import { useEffect, useState } from "react"
 import "./App.css"
-import { fetchData } from "../../common/utils"
-import logo from "./logo.svg"
+import { Books } from "./Books"
+import { Login } from "./Login"
+import { AuthRoute } from "./AuthRoute"
+import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom"
+import { useState } from "react"
 
 function App() {
-  const [books, setBooks] = useState([])
-  const [currentBook, setCurrentBook] = useState({})
-
-  useEffect(() => {
-    fetchData("books").then((data) => setBooks(data))
-  }, [])
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <div className="Sidebar">
-        {books.map((book) => (
-          <button
-            className="Get-button"
-            onClick={() => setCurrentBook(book)}
-            key={book.id}
-          >
-            {book.title}
-          </button>
-        ))}
-      </div>
-      <div className="Main">{currentBook.title}</div>
-    </div>
+    <Router>
+      <Switch>
+        <Redirect exact from="/" to="/books" />
+        <AuthRoute path="/login" type="public">
+          <Login />
+        </AuthRoute>
+        <AuthRoute path="/books" type="private">
+          <Books />
+        </AuthRoute>
+      </Switch>
+    </Router>
   )
 }
 

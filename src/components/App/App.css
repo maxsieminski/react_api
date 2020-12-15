@@ -1,5 +1,5 @@
 .App {
-  height: 100%;
+  height: 100vh;
   text-align: center;
   background-color: #282c34;
 }
@@ -8,7 +8,7 @@
   height: 15vmin;
   pointer-events: none;
 }
-  
+
 .Get-button {
   border: none;
   height: 10vh;
@@ -40,8 +40,27 @@
   height: 100%;
   margin-left: 25%;
   width: 75%;
-  color:white;
+  color: white;
   font-size: calc(10px + 2vmin);
+}
+
+.Login-body {
+  color: white;
+  font-size: calc(10px + 2vmin);
+}
+
+.Login-button {
+  border: none;
+  height: 10vh;
+  width: 10%;
+  margin: 3%;
+  color: white;
+  background-color: #414141;
+  font-size: calc(10px + 2vmin);
+}
+
+.Login-button:hover {
+  background-color: #282c34;
 }
 
 .App-link {
