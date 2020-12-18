@@ -1,12 +1,20 @@
 import logo from "./logo.svg"
+import AddBook from "./AddBook"
+import EditBook from "./EditBook"
 import { useEffect, useState } from "react"
 import { fetchData } from "../../common/utils"
 
 export function Books() {
   const [books, setBooks] = useState([])
   const [currentBook, setCurrentBook] = useState({})
+  const [editBook, setEditBook] = useState(false)
+  const [addBook, setAddBook] = useState(false)
 
   useEffect(() => {
+    updateItems()
+  }, [])
+
+  function updateItems() {
     fetchData("books", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -14,7 +22,7 @@ export function Books() {
     })
       .then((data) => setBooks(data))
       .catch((error) => console.log(error))
-  }, [])
+  }
 
   return (
     <div className="App">
@@ -25,14 +33,40 @@ export function Books() {
         {books.map((book) => (
           <button
             className="Get-button"
-            onClick={() => setCurrentBook(book)}
+            onClick={() => {
+              setCurrentBook(book)
+              setAddBook(false)
+              setEditBook(false)
+            }}
             key={book.id}
           >
             {book.title}
           </button>
         ))}
+        <button
+          className="Get-button"
+          onClick={() => {
+            setAddBook(true)
+            setEditBook(false)
+          }}
+        >
+          Add book
+        </button>
+        <button
+          className="Get-button"
+          onClick={() => {
+            setAddBook(false)
+            setEditBook(true)
+          }}
+        >
+          Edit books
+        </button>
       </div>
-      <div className="Main">{currentBook.title}</div>
+      <div className="Main">
+        {!addBook && !editBook && <p>{currentBook.title}</p>}
+        {addBook && <AddBook updateItems={updateItems} />}
+        {editBook && <EditBook updateItems={updateItems} books={books} />}
+      </div>
     </div>
   )
 }

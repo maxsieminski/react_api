@@ -7,13 +7,13 @@ export function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  function postLogin(email, password) {
+  async function postLogin(email, password) {
     const requestParams = {
       method: "POST",
       body: { email: email, password: password },
     }
 
-    fetchData("auth/login", requestParams)
+    await fetchData("auth/login", requestParams)
       .then((data) => {
         localStorage.setItem("token", data.access_token)
       })

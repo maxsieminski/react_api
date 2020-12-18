@@ -26,7 +26,7 @@
 
 .Sidebar {
   width: 25%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   font-size: calc(10px + 2vmin);
   background-color: #282c34;
@@ -37,7 +37,7 @@
 .Main {
   background-color: #282c34;
   position: absolute;
-  height: 100%;
+  height: 100vh;
   margin-left: 25%;
   width: 75%;
   color: white;
@@ -61,6 +61,10 @@
 
 .Login-button:hover {
   background-color: #282c34;
+}
+
+.booksPick {
+  width: 23vh;
 }
 
 .App-link {
