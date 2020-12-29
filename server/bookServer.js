@@ -23,7 +23,7 @@ app
     res.send(data)
   })
   .post(function (req, res) {
-    fs.writeFile(
+    fs.writeFileSync(
       database,
       JSON.stringify({
         books: data.concat({
@@ -32,9 +32,6 @@ app
           authors: req.body.authors,
         }),
       }),
-      (error) => {
-        if (error) console.log(error)
-      },
     )
     getData()
     res.send(data)
