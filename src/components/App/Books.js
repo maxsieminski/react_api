@@ -1,3 +1,4 @@
+import Book from "./Book"
 import logo from "./logo.svg"
 import AddBook from "./AddBook"
 import EditBook from "./EditBook"
@@ -34,6 +35,7 @@ export function Books() {
           <button
             className="Get-button"
             onClick={() => {
+              updateItems()
               setCurrentBook(book)
               setAddBook(false)
               setEditBook(false)
@@ -63,7 +65,13 @@ export function Books() {
         </button>
       </div>
       <div className="Main">
-        {!addBook && !editBook && <p>{currentBook.title}</p>}
+        {!addBook && !editBook && (
+          <Book
+            id={currentBook.id}
+            title={currentBook.title}
+            updateItems={updateItems}
+          />
+        )}
         {addBook && <AddBook updateItems={updateItems} />}
         {editBook && <EditBook updateItems={updateItems} books={books} />}
       </div>
