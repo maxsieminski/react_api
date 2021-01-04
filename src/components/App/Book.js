@@ -10,7 +10,9 @@ export function Book(props) {
     }
 
     fetchData(`books/${props.id}`, requestParams)
-      .then((data) => data)
+      .then((data) => {
+        props.updateItems()
+      })
       .catch((error) => console.log(error))
   }
 
@@ -23,7 +25,6 @@ export function Book(props) {
           className="Login-button"
           onClick={() => {
             deleteBook()
-            props.updateItems()
           }}
         >
           Delete

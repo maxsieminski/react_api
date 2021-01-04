@@ -17,7 +17,9 @@ export function AddBook(props) {
     }
 
     fetchData("books", requestParams)
-      .then((data) => console.log(data))
+      .then((data) => {
+        props.updateItems()
+      })
       .catch((error) => console.log(error))
   }
 
@@ -47,7 +49,6 @@ export function AddBook(props) {
         className="Login-button"
         onClick={() => {
           importBook()
-          props.updateItems()
         }}
       >
         OK
