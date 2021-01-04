@@ -66,11 +66,7 @@ export function Books() {
       </div>
       <div className="Main">
         {!addBook && !editBook && (
-          <Book
-            id={currentBook.id}
-            title={currentBook.title}
-            updateItems={updateItems}
-          />
+          <Book currentBook={currentBook} updateItems={updateItems} />
         )}
         {addBook && <AddBook updateItems={updateItems} />}
         {editBook && <EditBook updateItems={updateItems} books={books} />}

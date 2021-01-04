@@ -9,7 +9,7 @@ export function Book(props) {
       },
     }
 
-    fetchData(`books/${props.id}`, requestParams)
+    fetchData(`books/${props.currentBook.id}`, requestParams)
       .then((data) => {
         props.updateItems()
       })
@@ -18,9 +18,9 @@ export function Book(props) {
 
   return (
     <div>
-      <p>{props.title}</p>
+      <p>{props.currentBook.title}</p>
       <br />
-      {props.title && (
+      {props.currentBook.title && (
         <button
           className="Login-button"
           onClick={() => {
