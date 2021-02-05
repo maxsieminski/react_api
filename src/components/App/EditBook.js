@@ -18,8 +18,10 @@ export function EditBook(props) {
     }
 
     fetchData(`books/${id}`, requestParams)
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error))
+      .then((data) => {
+        props.updateItems()
+      })
+      .catch((error) => error)
   }
 
   return (
@@ -61,7 +63,6 @@ export function EditBook(props) {
         className="Login-button"
         onClick={() => {
           updateBook()
-          props.updateItems()
         }}
       >
         OK
